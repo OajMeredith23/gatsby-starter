@@ -1,28 +1,46 @@
-import React from "react"
-//import { css } from "@emotion/react"
+import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
-
-import Container from "../components/container"
+import * as styles from './index.module.sass'
+import Layout from "../components/Layout"
 
 export default function Home({ data }) {
+
+  const [hovered, setHovered] = useState(false);
   return (
-      <Container>
-        <h1>
-         Class Portfolio
-        </h1>
+    <Layout>
+
+      <div className={styles.container}>
+
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
+          <div
+            key={node.id}
+            onMouseEnter={() => setHovered(node.frontmatter.title)}
+            onMouseLeave={() => setHovered(false)}
+          >
             <Link to={node.fields.slug}>
-              <h3>{node.frontmatter.title}</h3>
-              <p>{node.excerpt}</p>
+              <h1 className={styles.designerTitle}>{node.frontmatter.name}</h1>
             </Link>
           </div>
         ))}
-      </Container>
+      </div>
+
+      {hovered &&
+        <div className="hoverState">
+          <h1>{hovered}</h1>
+          <img src="" alt="" />
+        </div>
+      }
+    </Layout>
   )
 }
+
 export const query = graphql`
   query {
+    site {
+      siteMetadata{
+        title
+      }
+    }
     allMarkdownRemark(filter: {frontmatter: {key: {eq: "profile"}}},
                       sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
@@ -30,7 +48,7 @@ export const query = graphql`
         node {
           id
           frontmatter {
-            title
+            name
             date(formatString: "DD MMMM, YYYY")
             colour
             price
