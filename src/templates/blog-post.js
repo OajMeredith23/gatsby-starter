@@ -33,7 +33,10 @@ export const query = graphql`
         owner
         project_pic {
           childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED) 
+            gatsbyImageData(
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+                )
           }
         }
       }

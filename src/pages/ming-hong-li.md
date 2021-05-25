@@ -1,7 +1,7 @@
 ---
 name: Ming-Hong Li
 biog: D&AD New Blood 2021 Award winning designer
-profile_pic: "../images/ochre.jpg"
+profile_pic: "../images/IMG_3337.JPG"
 behance: https://behance.net/minghong_peter_li/projects
 linkedin: https://linkedin.com/in/ming-hong-li-3855851a5 
 instagram: https://www.instagram.com/_mh.li/

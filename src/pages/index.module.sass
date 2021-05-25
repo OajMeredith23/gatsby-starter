@@ -5,31 +5,31 @@
     flex-direction: column
     justify-content: space-around
     position: relative
-    z-index: 2
+    z-index: 5
+
 
 
 .designerTitle
     text-align: center
     font-size: 8vw
     color: var(--blue)
+    position: relative
     &:hover 
+       z-index: 5 !important
        color: var(--accent)
        font-style: italic
       
 
 .hoverState 
     position: fixed
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
+    top: 50%
+    left: 50%
+    width: clamp(200px, 50%, 500px)
+    transform: translate(-50%, -50%)
     pointer-events: none
     display: flex
     justify-content: center
     align-items: center
-    z-index: 0
-    img 
-        max-height: 500px
-        object-position: center
+    z-index: 3
 
     
