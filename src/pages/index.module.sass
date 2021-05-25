@@ -4,6 +4,9 @@
     display: flex
     flex-direction: column
     justify-content: space-around
+    position: relative
+    z-index: 2
+
 
 .designerTitle
     text-align: center
@@ -11,6 +14,22 @@
     color: var(--blue)
     &:hover 
        color: var(--accent)
+       font-style: italic
       
+
+.hoverState 
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    pointer-events: none
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 0
+    img 
+        max-height: 500px
+        object-position: center
 
     

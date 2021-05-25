@@ -1,35 +1,42 @@
 import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
+
 import * as styles from './index.module.sass'
 import Layout from "../components/Layout"
 
 export default function Home({ data }) {
 
   const [hovered, setHovered] = useState(false);
+
   return (
     <Layout>
 
       <div className={styles.container}>
 
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div
-            key={node.id}
-            onMouseEnter={() => setHovered(node.frontmatter.title)}
-            onMouseLeave={() => setHovered(false)}
-          >
-            <Link to={node.fields.slug}>
-              <h1 className={styles.designerTitle}>{node.frontmatter.name}</h1>
-            </Link>
-          </div>
-        ))}
+        {data.allMarkdownRemark.edges.map(({ node }) => {
+
+          const img = node.frontmatter.profile_pic.childImageSharp.gatsbyImageData
+
+          return (
+            <div
+              key={node.id}
+              onMouseEnter={() => setHovered(img)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              <Link to={node.fields.slug}>
+                <h1 className={styles.designerTitle}>{node.frontmatter.name}</h1>
+              </Link>
+            </div>
+          )
+        })}
       </div>
 
-      {hovered &&
-        <div className="hoverState">
-          <h1>{hovered}</h1>
-          <img src="" alt="" />
-        </div>
-      }
+      <div className={styles.hoverState}>
+        {hovered &&
+          <GatsbyImage image={hovered} />
+        }
+      </div>
     </Layout>
   )
 }
@@ -50,8 +57,11 @@ export const query = graphql`
           frontmatter {
             name
             date(formatString: "DD MMMM, YYYY")
-            colour
-            price
+            profile_pic {
+                        childImageSharp {
+                            gatsbyImageData(layout: CONSTRAINED) 
+                        }
+                    }
           }
           fields {
             slug

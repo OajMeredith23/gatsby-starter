@@ -30,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
         query {
           # All Markdown nodes whose key is "post":
           posts:
-            allMarkdownRemark(filter: {frontmatter: {key: {eq: "post"}}}) {
+            allMarkdownRemark(filter: {frontmatter: {key: {eq: "project"}}}) {
               edges { node { fields { slug } } }
             },
           # All Markdown nodes whose key is "profile":

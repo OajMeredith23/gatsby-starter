@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 export default function Author({ data }) {
     const author = data.thisPage
     const blogPages = data.blogPages
+    console.log({ blogPages })
 
     const img = author.frontmatter.profile_pic.childImageSharp.gatsbyImageData
 
@@ -15,7 +16,7 @@ export default function Author({ data }) {
 
             {blogPages.edges.map(x =>
                 <div key={x.node.id} className="row">
-                    <Link to={x.node.fields.slug}>{x.node.frontmatter.name}</Link>
+                    <Link to={x.node.fields.slug}>{x.node.frontmatter.title}</Link>
                 </div>
             )}
 
