@@ -13,7 +13,9 @@ export default function BlogPost({ data }) {
   console.log(post.frontmatter)
 
   //Sorry for this absolute hack, but its much easier than doing a graphql query for the profile file
-  const author = (post.frontmatter.owner).replaceAll("-", " ");
+  // I'm aware that if we had someone with a hyphenated name, this would be awful. It's a horrible hack and I'm not proud.
+  const author = (post.frontmatter.owner).replace("-", " ");
+
   return (
     <Layout goBack={{ path: `/${post.frontmatter.owner}/`, text: author }}>
       <Helmet>
