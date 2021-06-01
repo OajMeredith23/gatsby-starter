@@ -3,23 +3,25 @@ import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
 import * as styles from './author.module.sass'
-import { ArrowLeft } from '@material-ui/icons'
+import FeatherIcon from 'feather-icons-react'
+import { SocialIcon } from 'react-social-icons';
 
 export default function Author({ data }) {
     const author = data.thisPage
     const blogPages = data.blogPages
-    console.log({ blogPages })
 
     const profile_img = author.frontmatter.profile_pic.childImageSharp.gatsbyImageData
+    const { twitter = false, instagram = false, github = false, site = false } = author.frontmatter
 
     return (
-        <Layout>
+        <Layout goBack={{ path: '/', text: 'See other designers' }}>
             <div className={`row ${styles.container}`}>
+
                 <Link to="/">
-                    <div className={styles.nav}>
-                        <ArrowLeft /> <small>See other designers</small>
-                    </div>
+
+
                 </Link>
+
                 <div className={`col-md-4`}>
                     <div className={styles.profile}>
                         <GatsbyImage
@@ -27,31 +29,36 @@ export default function Author({ data }) {
                             image={profile_img}
                             alt=""
                         />
+
                         <div className={styles.profileText}>
                             <h1>{author.frontmatter.name}</h1>
                             <p>{author.frontmatter.biog}</p>
                         </div>
+
+                        {site &&
+                            <div className={styles.site}>
+                                <a href={site} target="_blank" rel="noopener noreferrer">
+                                    <p><FeatherIcon icon="globe" /> Website</p>
+                                </a>
+                            </div>
+                        }
+
+                        <div className={styles.social}>
+                            {[twitter, instagram, github].map(link => link && <SocialIcon key={link} url={link} />)}
+                        </div>
                     </div>
                 </div>
-
 
                 <div className={`col-md-8 ${styles.projects}`}>
 
                     <div dangerouslySetInnerHTML={{ __html: author.html }} />
 
-                    <h1>Projects</h1>
                     {blogPages.edges.map(({ node }) => {
                         const project_img = node.frontmatter.project_pic.childImageSharp.gatsbyImageData
                         return (
                             <Link to={node.fields.slug} key={node.id}>
                                 <div className={`row ${styles.project}`}>
-                                    <div className={`col-lg-3 ${styles.title}`}>
-                                        <h2>
-                                            {node.frontmatter.title}
-                                        </h2>
-                                        {/* <small>{node.frontmatter.unit}</small> */}
-                                    </div>
-                                    <div className={`col-lg-9 ${styles.img}`}>
+                                    <div className={` ${styles.img}`}>
                                         <GatsbyImage
                                             image={project_img}
                                             alt=""
@@ -78,6 +85,11 @@ export const query = graphql`
                 frontmatter {
                     name
                     biog
+                    twitter
+                    site
+                    linkedin
+                    instagram
+                    github
                     profile_pic {
                         childImageSharp {
                             gatsbyImageData(layout: CONSTRAINED) 
@@ -98,7 +110,7 @@ export const query = graphql`
                         }
                         frontmatter {
                             title
-                            # unit
+                            
                             project_pic {
                                 childImageSharp {
                                     gatsbyImageData(layout: CONSTRAINED) 

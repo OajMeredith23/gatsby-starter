@@ -10,7 +10,7 @@ export default function Home({ data }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Layout>
+    <Layout >
 
       <div className={styles.container}>
 

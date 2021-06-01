@@ -2,7 +2,7 @@
 name: Nathanael
 biog: dude
 profile_pic: "../images/IMG_1780.JPG"
-Instagram: "https://www.instagram.com/nasherwood/"
+instagram: "https://www.instagram.com/nasherwood/"
 site: "https://documentcloud.adobe.com/link/track?uri=urn:aaid:scds:US:74cdc713-66c3-4b1d-8f91-87bef5689c78"
 key: profile
 ---

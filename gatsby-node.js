@@ -41,7 +41,6 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     `)
 
-  console.log("RESULT!! =>", result.errors);
   // Create pages for all posts:
   result.data.posts.edges.forEach(({ node }) => {
     createPage({
