@@ -4,6 +4,21 @@
   --textColor: black
   --accent: #FFD300
 
+@media (prefers-color-scheme: dark)
+    :root
+        --background: black
+        --textColor: whitesmoke
+        --accent: #FFD300
+
+.social-svg-mask 
+    path
+        fill: var(--textColor)
+
+    // :root 
+    //     --background: black
+    //     --textColor: whitesmoke
+    //     --accent: #FFD300
+
 * 
     box-sizing: border-box
     padding: 0
