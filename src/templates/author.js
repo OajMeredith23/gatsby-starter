@@ -2,29 +2,68 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
+import * as styles from './author.module.sass'
+import { ArrowLeft } from '@material-ui/icons'
 
 export default function Author({ data }) {
     const author = data.thisPage
     const blogPages = data.blogPages
     console.log({ blogPages })
 
-    const img = author.frontmatter.profile_pic.childImageSharp.gatsbyImageData
+    const profile_img = author.frontmatter.profile_pic.childImageSharp.gatsbyImageData
 
     return (
         <Layout>
-            <h1>{author.frontmatter.title}</h1>
-
-            {blogPages.edges.map(x =>
-                <div key={x.node.id} className="row">
-                    <Link to={x.node.fields.slug}>{x.node.frontmatter.title}</Link>
+            <div className={`row ${styles.container}`}>
+                <Link to="/">
+                    <div className={styles.nav}>
+                        <ArrowLeft /> <small>See other designers</small>
+                    </div>
+                </Link>
+                <div className={`col-md-4`}>
+                    <div className={styles.profile}>
+                        <GatsbyImage
+                            className={styles.profileImg}
+                            image={profile_img}
+                            alt=""
+                        />
+                        <div className={styles.profileText}>
+                            <h1>{author.frontmatter.name}</h1>
+                            <p>{author.frontmatter.biog}</p>
+                        </div>
+                    </div>
                 </div>
-            )}
 
-            <div>
-                <GatsbyImage image={img} alt="" />
+
+                <div className={`col-md-8 ${styles.projects}`}>
+
+                    <div dangerouslySetInnerHTML={{ __html: author.html }} />
+
+                    <h1>Projects</h1>
+                    {blogPages.edges.map(({ node }) => {
+                        const project_img = node.frontmatter.project_pic.childImageSharp.gatsbyImageData
+                        return (
+                            <Link to={node.fields.slug} key={node.id}>
+                                <div className={`row ${styles.project}`}>
+                                    <div className={`col-lg-3 ${styles.title}`}>
+                                        <h2>
+                                            {node.frontmatter.title}
+                                        </h2>
+                                        {/* <small>{node.frontmatter.unit}</small> */}
+                                    </div>
+                                    <div className={`col-lg-9 ${styles.img}`}>
+                                        <GatsbyImage
+                                            image={project_img}
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                            </Link>
+                        )
+                    })}
+
+                </div>
             </div>
-
-            <div dangerouslySetInnerHTML={{ __html: author.html }} />
         </Layout>
     )
 }
@@ -38,6 +77,7 @@ export const query = graphql`
                 html
                 frontmatter {
                     name
+                    biog
                     profile_pic {
                         childImageSharp {
                             gatsbyImageData(layout: CONSTRAINED) 
@@ -58,6 +98,12 @@ export const query = graphql`
                         }
                         frontmatter {
                             title
+                            # unit
+                            project_pic {
+                                childImageSharp {
+                                    gatsbyImageData(layout: CONSTRAINED) 
+                                }
+                            }
                         }
                     }
                 }
