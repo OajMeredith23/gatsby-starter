@@ -38,6 +38,7 @@ module.exports = {
           resolve: "gatsby-remark-embed-video",
           options: { related: false }
         },
+        `gatsby-remark-responsive-iframe`
       ],
     },
   },
@@ -53,5 +54,6 @@ module.exports = {
     }
   },
     `gatsby-plugin-react-helmet`
+
   ]
 }
