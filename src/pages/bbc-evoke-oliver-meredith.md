@@ -9,8 +9,6 @@ unit: Design In The Wild
 
 # Brief
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, corrupti saepe rerum, harum totam dolore pariatur quis non recusandae tenetur sapiente delectus? Beatae magnam ipsam explicabo, similique alias cum aperiam!
-
 # Solution
 
 `video: https://www.youtube.com/watch?v=KlJpwUF4RzI&t=11s`
