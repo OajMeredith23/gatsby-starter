@@ -11,6 +11,7 @@ export default function BlogPost({ data }) {
   const profiles = data.profiles.edges
 
   useEffect(() => {
+    // I import all the designer profiles in my graphql query, then find the relevant one. 
     profiles.forEach(p => console.log(p.node.fields))
     const currOwner = profiles.find(prof => prof.node.fields.owner === post.frontmatter.owner).node
     setOwner(currOwner.frontmatter.name);
@@ -19,9 +20,7 @@ export default function BlogPost({ data }) {
   const post = data.post
   let img = post.frontmatter.project_pic.childImageSharp.gatsbyImageData
 
-  //Sorry for this absolute hack, but its much easier than doing a graphql query for the profile file
-  // I'm aware that if we had someone with a hyphenated name, this would be awful. It's a horrible hack and I'm not proud.
-  // const author = (post.frontmatter.owner).replace("-", " ");
+
 
   return (
     <Layout goBack={{ path: `/${post.frontmatter.owner}/`, text: owner }}>
@@ -56,38 +55,6 @@ export default function BlogPost({ data }) {
     </Layout>
   )
 }
-
-// export const OtherDesigners = ({ profiles }) => {
-
-//   return (
-//     <div className={`row ${styles.otherDesignersContainer}`}>
-
-//       <h1>Other Designers</h1>
-//       {profiles.map(profile => {
-//         const { frontmatter } = profile.node
-//         let img = frontmatter.profile_pic.childImageSharp.gatsbyImageData
-
-//         return (
-//           <Link to={profile.node.fields.slug} className={`col-lg-4 col-md-6 ${styles.otherDesigner}`}>
-//             <GatsbyImage
-//               className={styles.otherDesignerImage}
-//               image={img}
-//             />
-//             <div>
-//               <h2>
-//                 {frontmatter.name}
-//               </h2>
-//               <p>
-//                 {frontmatter.biog}
-//               </p>
-//             </div>
-//           </Link>
-//         )
-//       })}
-//     </div>
-//   )
-// }
-
 
 export const query = graphql`
   query($slug: String!) {
