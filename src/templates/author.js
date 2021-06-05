@@ -5,8 +5,10 @@ import Layout from "../components/Layout"
 import * as styles from './author.module.sass'
 import FeatherIcon from 'feather-icons-react'
 import { SocialIcon } from 'react-social-icons';
+import OtherDesigners from '../components/OtherDesigners';
 
 export default function Author({ data }) {
+
     const author = data.thisPage
     const blogPages = data.blogPages
 
@@ -71,6 +73,10 @@ export default function Author({ data }) {
 
                 </div>
             </div>
+
+            <OtherDesigners
+                currDesigner={author.fields.tag}
+            />
         </Layout>
     )
 }
@@ -82,6 +88,10 @@ export const query = graphql`
         thisPage:
             markdownRemark(fields: { slug: { eq: $slug } }) {
                 html
+                fields {
+                    slug 
+                    tag
+                }
                 frontmatter {
                     name
                     biog

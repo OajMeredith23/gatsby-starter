@@ -1,12 +1,14 @@
 
 :root 
   --background: whitesmoke
+  --middleground: #f9f9f9
   --textColor: black
   --accent: #FFD300
 
 @media (prefers-color-scheme: dark)
     :root
         --background: black
+        --middleground: #333
         --textColor: whitesmoke
         --accent: #FFD300
 
@@ -41,6 +43,8 @@ h1, h2, h3, h3, h4, h5, h6
     margin: 0
     text-transform: capitalize
 
+ul, li
+    list-style: none
 p
     margin: 0
     
@@ -57,3 +61,9 @@ img
         width: 100%
         min-height: 400px
 
+a 
+    text-decoration: underline
+.group
+    padding: 2em 1em 3em 1em 
+    margin: 3em 0
+    background: var(--middleground)
