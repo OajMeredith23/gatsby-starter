@@ -19,10 +19,6 @@ export default function Author({ data }) {
         <Layout goBack={{ path: '/', text: 'See other designers' }}>
             <div className={`row ${styles.container}`}>
 
-                <Link to="/">
-
-
-                </Link>
 
                 <div className={`col-md-4`}>
                     <div className={styles.profile}>
@@ -40,7 +36,7 @@ export default function Author({ data }) {
                         {site &&
                             <div className={styles.site}>
                                 <a href={site} target="_blank" rel="noopener noreferrer">
-                                    <p><FeatherIcon icon="globe" /> Website</p>
+                                    <p><FeatherIcon icon="globe" style={{ marginRight: '.5em' }} />Website</p>
                                 </a>
                             </div>
                         }
