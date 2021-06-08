@@ -7,7 +7,7 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Ravensbourne UX/UI 2021`,
+    title: `Rave UX/UI 2021`,
   },
   plugins: [{
     resolve: `gatsby-source-filesystem`,
