@@ -26,23 +26,30 @@ export default function Layout({ children, location, goBack }) {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
-        {/* <link rel="canonical" href="TODO:// update with live url" /> */}
 
       </Helmet>
 
       <div className={`${styles.bgGridContainer} row`}>
-        {Array.from({ length: 12 }).map(col =>
-          <div className={`${styles.bgGridItem} col-1`}>
+        {Array.from({ length: 6 }).map(col =>
+          <div className={`${styles.bgGridItem} col-2`}>
           </div>
         )}
       </div>
 
       <header className={`${styles.navbar} ${isHome ? styles.isHome : ''}`}>
-        <Link to="/" className={styles.title}>
-          <h3>
-            {title}
-          </h3>
-        </Link>
+        <div className={styles.navItems}>
+
+          <Link to="/" className={styles.title}>
+            <h2>
+              {title}
+            </h2>
+          </Link>
+          <Link to="/about" className={styles.title}>
+            <h4>
+              About
+          </h4>
+          </Link>
+        </div>
 
         {goBack &&
           <div className={styles.goBack}>

@@ -56,11 +56,16 @@ const OtherDesigners = ({ currDesigner = false }) => {
                         return (
                             <li key={profile.node.fields.slug} className={`col-lg-4 col-md-6`}>
                                 <Link to={profile.node.fields.slug} className={styles.otherDesigner}>
-                                    <GatsbyImage
+                                    <div
                                         className={styles.otherDesignerImage}
-                                        image={img}
-                                    />
-                                    <div>
+                                    >
+                                        <GatsbyImage
+                                            className={styles.image}
+                                            image={img}
+                                        />
+
+                                    </div>
+                                    <div className={styles.otherDesignerText}>
                                         <h2>
                                             {frontmatter.name}
                                         </h2>

@@ -4,16 +4,21 @@
     margin-top: 2em
 
 .otherDesigner
-    margin-top: 1em
+    margin-top: 2em
+    display: flex 
+    align-items: center 
     @media(min-width: 600px)
-        display: flex 
-        align-items: center 
     .otherDesignerImage
-        border-radius: 5000px
         width: 150px
         height: 150px
+        border-radius: 50%
+        background: var(--textColor)
         margin-right: 1em
-        img 
-            height: 150px
-            object-fit: cover 
-            margin-right: 1em
+        overflow: hidden
+        .image 
+            object-fit: contain
+            object-position: center
+
+
+    .otherDesignerText 
+        flex: 2

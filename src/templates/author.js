@@ -47,9 +47,9 @@ export default function Author({ data }) {
                     </div>
                 </div>
 
-                <div className={`col-md-8 ${styles.projects}`}>
+                <div className={`col-md-8 row ${styles.projects}`}>
 
-                    <div dangerouslySetInnerHTML={{ __html: author.html }} />
+                    <div className={`col-8 ${styles.content}`} dangerouslySetInnerHTML={{ __html: author.html }} />
 
                     {blogPages.edges.map(({ node }) => {
                         const project_img = node.frontmatter.project_pic.childImageSharp.gatsbyImageData

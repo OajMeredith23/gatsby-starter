@@ -7,6 +7,12 @@
 .navbar 
     margin-bottom: 1em
 
+.navItems 
+    display: flex 
+    justify-content: space-between
+    a 
+        margin-right: 1em
+
 .title 
     display: inline-block
     justify-self: center
@@ -26,6 +32,7 @@
 
 .bgGridItem
     border-left: 1px dotted var(--textColor)
-    // border-right: .25px dotted var(--textColor)
     opacity: 0.1
+    &:last-child
+        border-right: 1px dotted var(--textColor)
 

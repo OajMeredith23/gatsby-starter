@@ -20,10 +20,10 @@ export default function BlogPost({ data }) {
   const post = data.post
   let img = post.frontmatter.project_pic.childImageSharp.gatsbyImageData
 
-
-
   return (
+
     <Layout goBack={{ path: `/${post.frontmatter.owner}/`, text: owner }}>
+
       <Helmet>
         <title>{post.frontmatter.title}</title>
         <meta name="description" content="Free Web tutorials"></meta>
