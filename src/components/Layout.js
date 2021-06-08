@@ -30,6 +30,13 @@ export default function Layout({ children, location, goBack }) {
 
       </Helmet>
 
+      <div className={`${styles.bgGridContainer} row`}>
+        {Array.from({ length: 12 }).map(col =>
+          <div className={`${styles.bgGridItem} col-1`}>
+          </div>
+        )}
+      </div>
+
       <header className={`${styles.navbar} ${isHome ? styles.isHome : ''}`}>
         <Link to="/" className={styles.title}>
           <h3>

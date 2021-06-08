@@ -45,11 +45,12 @@ const OtherDesigners = ({ currDesigner = false }) => {
 
             <h1>Other Designers</h1>
             <listDesigners className={`row ${styles.listDesigners}`}>
+
                 {profiles && profiles.allMarkdownRemark.edges
                     .filter(profile => profile.node.fields.owner !== currDesigner) // 
                     .map(profile => {
+
                         const { frontmatter } = profile.node
-                        console.log({ frontmatter })
                         let img = frontmatter.profile_pic.childImageSharp.gatsbyImageData
 
                         return (
@@ -71,6 +72,7 @@ const OtherDesigners = ({ currDesigner = false }) => {
                             </li>
                         )
                     })}
+
             </listDesigners>
         </div>
     )
