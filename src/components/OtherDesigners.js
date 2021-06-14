@@ -41,7 +41,7 @@ const OtherDesigners = ({ currDesigner = false }) => {
     return (
         <div className={`${styles.otherDesignerContainer} group`}>
 
-            <h1>Other Designers</h1>
+            <h1>Designers</h1>
             <listDesigners className={`row ${styles.listDesigners}`}>
 
                 {profiles && profiles.allMarkdownRemark.edges
