@@ -16,7 +16,7 @@ export default function Home({ data }) {
 
         {data.allMarkdownRemark.edges.map(({ node }) => {
 
-          const img = node.frontmatter.profile_pic.childImageSharp.gatsbyImageData
+          const img = node?.frontmatter?.profile_pic?.childImageSharp.gatsbyImageData
 
           return (
             <div
