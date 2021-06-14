@@ -49,7 +49,7 @@ const OtherDesigners = ({ currDesigner = false }) => {
                     .map(profile => {
 
                         const { frontmatter } = profile.node
-                        let img = frontmatter.profile_pic.childImageSharp.gatsbyImageData
+                        let img = frontmatter?.profile_pic?.childImageSharp.gatsbyImageData
 
                         return (
                             <li key={profile.node.fields.slug} className={`col-lg-4 col-md-6`}>
