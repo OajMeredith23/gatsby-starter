@@ -12,7 +12,7 @@ export default function Author({ data }) {
     const author = data.thisPage
     const blogPages = data.blogPages
 
-    const profile_img = author.frontmatter.profile_pic.childImageSharp.gatsbyImageData
+    const profile_img = author?.frontmatter?.profile_pic?.childImageSharp.gatsbyImageData
     const { twitter = false, instagram = false, github = false, site = false } = author.frontmatter
 
     return (

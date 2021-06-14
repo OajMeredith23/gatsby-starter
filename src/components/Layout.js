@@ -23,10 +23,10 @@ export default function Layout({ children, location, goBack }) {
 
   return (
     <div className={styles.container}>
+
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
-
       </Helmet>
 
       <div className={`${styles.bgGridContainer} row`}>
@@ -47,7 +47,7 @@ export default function Layout({ children, location, goBack }) {
           <Link to="/about" className={styles.title}>
             <h4>
               About
-          </h4>
+            </h4>
           </Link>
         </div>
 

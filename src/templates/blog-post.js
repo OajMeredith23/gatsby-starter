@@ -18,7 +18,7 @@ export default function BlogPost({ data }) {
   }, [])
 
   const post = data.post
-  let img = post.frontmatter.project_pic.childImageSharp.gatsbyImageData
+  let img = post?.frontmatter?.project_pic?.childImageSharp.gatsbyImageData
 
   return (
 
