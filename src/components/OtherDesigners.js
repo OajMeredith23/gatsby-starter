@@ -5,8 +5,6 @@ import * as styles from './otherDesigners.module.sass';
 
 
 const OtherDesigners = ({ currDesigner = false }) => {
-    console.log({ currDesigner })
-
 
     const profiles = useStaticQuery(graphql`
         query {
