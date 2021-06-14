@@ -1,5 +1,5 @@
 ---
-name: Nathanael Sherwood
+name: Nathanael
 biog: dude
 profile_pic: "../images/IMG_1780.JPG"
 instagram: "https://www.instagram.com/nasherwood/"
